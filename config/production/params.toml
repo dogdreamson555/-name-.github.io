@@ -1,0 +1,18 @@
+[comments]
+  enabled = true
+  provider = "giscus"
+
+  [comments.giscus]
+    repo = "dogdreamson555/dogdreamson555.github.io"
+    repoID = "R_kgDOUR8xoA"
+    category = "Announcements"
+    categoryID = "DIC_kwDOUR8xoM4DFJoH"
+    mapping = "pathname"
+    strict = 1
+    reactionsEnabled = 1
+    emitMetadata = 0
+    inputPosition = "top"
+    lightTheme = "light"
+    darkTheme = "dark_dimmed"
+    lang = "zh-CN"
+    loading = "lazy"

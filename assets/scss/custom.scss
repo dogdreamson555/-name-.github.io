@@ -1,0 +1,264 @@
+/* Article cards follow the reference site's wide banner treatment. */
+.article-list article.has-image {
+    .article-image {
+        /* Stack's list cards use a fixed desktop banner height. */
+        height: var(--article-image-height);
+        overflow: hidden;
+
+        & > a {
+            display: block;
+            height: 100%;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.article-page .main-article.has-image {
+    .article-header .article-image {
+        aspect-ratio: 16 / 5;
+        height: auto;
+        overflow: hidden;
+
+        & > a {
+            display: block;
+            height: 100%;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: none;
+            object-fit: cover;
+        }
+    }
+}
+
+/* Keep the hierarchy used by the reference card: title, metadata, summary, tags. */
+.article-list article.has-image,
+.article-page .main-article.has-image {
+    .article-details {
+        gap: var(--spacing-lg);
+    }
+
+    .article-title {
+        text-align: center;
+    }
+}
+
+.article-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: var(--card-text-color-tertiary);
+    font-size: 1.4rem;
+    line-height: 1.5;
+
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+
+        & + &::before {
+            content: "|";
+            margin: 0 var(--spacing-md);
+        }
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        stroke-width: 1.33;
+    }
+
+    time,
+    a,
+    span {
+        color: inherit;
+        font-size: inherit;
+    }
+}
+
+.article-category {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    .left-category,
+    .right-tag {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .right-tag {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 767px) {
+    .article-time__item + .article-time__item::before {
+        margin-inline: var(--spacing-sm);
+    }
+
+    .article-category {
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+
+        .right-tag {
+            justify-content: flex-start;
+        }
+    }
+}
+
+/* Collapse nested entries in the desktop table of contents. The script in
+   footer/custom.html opens the branch containing the active heading. */
+#TableOfContents {
+    li > ul,
+    li > ol {
+        display: none;
+    }
+
+    li.toc-expanded > ul,
+    li.toc-expanded > ol {
+        display: block;
+    }
+}
+
+/* A quiet, full-viewport layer keeps the floating network behind the cards. */
+#particles-js {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+
+    & > .particles-js-canvas-el {
+        position: fixed;
+        inset: 0;
+        width: 100% !important;
+        height: 100% !important;
+        pointer-events: none;
+    }
+}
+
+body > .main-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Keep the requested fish animation at the bottom of the document. */
+#custom-footer-fish {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 0;
+}
+
+#jsi-flying-fish-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    opacity: 0.5;
+    pointer-events: none;
+
+    canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    #jsi-flying-fish-container {
+        height: 150px;
+        opacity: 0.42;
+    }
+}
+
+/* Collapse only code blocks that are taller than the reference height. */
+.article-content {
+    .highlight.code-collapsed {
+        max-height: 400px;
+        overflow: hidden;
+    }
+
+    .highlight.code-expanded {
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+.code-more-box {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 106px;
+    padding: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, var(--pre-background-color));
+}
+
+.code-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 44px;
+    height: 28px;
+    padding: 0;
+    color: var(--card-text-color-tertiary);
+    background: var(--card-background);
+    border: 0;
+    border-radius: 8px 8px 0 0;
+    box-shadow: var(--shadow-l1);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    svg {
+        width: 22px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    &:hover {
+        color: var(--card-text-color-main);
+        background: var(--card-background-selected);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .code-more-btn {
+        transition: none;
+    }
+}

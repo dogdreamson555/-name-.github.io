@@ -1,0 +1,50 @@
+{{ define "body-class" }}template-taxonomies{{ end }}
+
+{{ define "main" }}
+    <header>
+        <h1 class="section-title">{{ .Title }}</h1>
+        {{ with .Content }}
+            <div class="article-content">{{ . }}</div>
+        {{ end }}
+    </header>
+
+    {{- $categories := .Site.Taxonomies.categories.ByCount -}}
+    {{- $tags := .Site.Taxonomies.tags.ByCount -}}
+
+    {{ if $categories }}
+        {{ partial "widget/taxonomy" (dict
+            "Context" .
+            "Params" (dict
+                "taxonomy" "categories"
+                "title" "分类"
+                "icon" "categories"
+                "limit" (len $categories)
+                "showLink" false
+            )
+        ) }}
+    {{ end }}
+
+    {{ if $tags }}
+        {{ partial "widget/taxonomy" (dict
+            "Context" .
+            "Params" (dict
+                "taxonomy" "tags"
+                "title" "标签"
+                "icon" "tag"
+                "limit" (len $tags)
+                "showLink" false
+            )
+        ) }}
+    {{ end }}
+
+    {{ if not (or $categories $tags) }}
+        <section class="section-card">
+            <div class="section-details">
+                <h2 class="section-term">还没有可浏览的分类或标签</h2>
+                <p class="section-description">发布文章并添加分类或标签后，它们会显示在这里。</p>
+            </div>
+        </section>
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}

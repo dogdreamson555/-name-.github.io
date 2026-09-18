@@ -1,0 +1,23 @@
+mainSections = ["post"]
+favicon = "img/favicon.png"
+
+[sidebar]
+  avatar = "https://avatars.githubusercontent.com/u/217573474?s=400&u=f8c010f4cbe0faa92b33fa7b38209273ad4bc681&v=4"
+
+[article]
+  toc = true
+  readingTime = true
+
+  [article.list]
+  showTags = true
+
+[widgets]
+  homepage = [{ type = "archives", params = { limit = 5 } }]
+  page = [{ type = "toc" }]
+
+[comments]
+  enabled = false
+
+[dateFormat]
+  published = "2006-01-02"
+  lastUpdated = "2006-01-02"

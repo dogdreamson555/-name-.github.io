@@ -18,8 +18,6 @@
 
 部署时会自动读取 GitHub Pages 的实际地址，无需手动替换工作流中的用户名或仓库名。创建仓库后仍需完成一次上述 Pages 设置。
 
-> 如果原仓库没有 **Use this template** 按钮，仓库管理员需要先在 **Settings → General** 中勾选 **Template repository**。
-
 ## 修改博客资料
 
 | 内容 | 修改位置 |

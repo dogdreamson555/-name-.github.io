@@ -66,4 +66,4 @@ flowchart LR
     A[编写 Markdown] --> B[本地预览] --> C[检查内容] --> D[发布文章]
 ```
 
-阅读[开始使用]({{< relref "/post/getting-started" >}})，或[返回首页]({{< relref "/" >}})。
+[返回首页]({{< relref "/" >}})

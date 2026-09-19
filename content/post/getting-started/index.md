@@ -14,12 +14,12 @@ image: ""
 ## 修改博客资料
 
 - 部署后的博客名称自动使用 `GitHub用户名 的博客`。需要自定义时，在仓库的 Actions Variables 中设置 `BLOG_TITLE`；本地预览名称由 `config/_default/hugo.toml` 中的 `title` 控制。
-- 在 `config/_default/params.toml` 中设置 `sidebar.avatar`。例如把头像放到 `assets/img/avatar.png`，再填写 `img/avatar.png`。
+- 侧栏默认使用部署时下载的 GitHub 头像。需要自定义时，在 `config/_default/params.toml` 中设置 `sidebar.avatar`，例如把头像放到 `assets/img/avatar.png`，再填写 `img/avatar.png`。
 - 评论默认关闭。启用前请在 `config/production/params.toml` 中配置自己的评论服务。
 
 GitHub Pages 工作流会自动设置部署网址。部署到其他平台时，请自行修改 `baseURL`。
 
-浏览器标签页图标（favicon）会在 GitHub Pages 部署时自动使用仓库所有者的 GitHub 头像；组织仓库使用组织头像。更新头像后，重新运行部署即可更新网站图标。本地预览或头像下载失败时使用 `assets/img/favicon.svg` 备用图标。此功能不影响侧栏头像设置。
+浏览器标签页图标（favicon）与默认侧栏头像共用部署时下载的仓库所有者头像；组织仓库使用组织头像。更新头像后，重新运行部署即可更新。本地预览或下载失败时，favicon 使用 `assets/img/favicon.svg`，侧栏仅在配置了自定义头像时显示头像。
 
 ## 创建第一篇文章
 
@@ -60,4 +60,4 @@ hugo server -D
 
 仓库使用其他名称时，网站通常位于 `https://你的用户名.github.io/仓库名/`，现有工作流会自动传入对应地址。
 
-查看另一篇[Markdown 写作示例]({{< relref "/post/reading-preview" >}})，了解代码、公式和图片的写法。
+[返回首页]({{< relref "/" >}})

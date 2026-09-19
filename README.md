@@ -34,7 +34,7 @@ GitHub Pages 部署时，博客名称自动设为 `GitHub用户名 的博客`（
 
 需要自定义线上名称时，在仓库 **Settings → Secrets and variables → Actions → Variables** 中添加仓库变量 `BLOG_TITLE`。本地预览名称由 `hugo.toml` 中的 `title` 控制。
 
-侧栏头像默认留空；可以将头像放在 `assets/img/avatar.png`，然后修改已有的 `[sidebar]` 配置：
+侧栏头像配置留空时，自动使用部署下载的 GitHub 头像。自定义头像优先：可以将头像放在 `assets/img/avatar.png`，然后修改已有的 `[sidebar]` 配置：
 
 ```toml
 [sidebar]
@@ -45,7 +45,7 @@ GitHub Pages 部署时，博客名称自动设为 `GitHub用户名 的博客`（
 
 GitHub Pages 部署时会下载**仓库所有者的 GitHub 头像**，生成透明背景的圆形 SVG favicon；组织仓库使用组织头像。头像嵌入 SVG 并作为本地资源随网站发布，访客无需向 GitHub 请求图片。
 
-修改 GitHub 头像后，重新运行部署即可更新。下载失败时和本地预览时使用 [assets/img/favicon.svg](assets/img/favicon.svg) 备用图标。此设置与侧栏头像独立。
+修改 GitHub 头像后，重新运行部署即可更新 favicon 和默认侧栏头像，两者共用一次下载。下载失败时和本地预览时，favicon 使用 [assets/img/favicon.svg](assets/img/favicon.svg) 备用图标，侧栏仅在配置了自定义头像时显示头像。
 
 ### 评论
 
@@ -79,7 +79,7 @@ image: ""
 - [开始使用你的博客](content/post/getting-started/index.md)
 - [Markdown 写作示例](content/post/reading-preview/index.md)：含代码、表格、公式、图片和 Mermaid 流程图。
 
-替换示例时，注意这两篇文章互相引用。如果删除其中一篇，请同时删除或修改另一篇指向它的 `relref` 链接；也可以一起删除两个示例目录，再添加自己的文章。保留 `content/page/` 中的归档、搜索和分类页面。
+两篇示例互不依赖，可以独立删除任意示例目录，再添加自己的文章。保留 `content/page/` 中的归档、搜索和分类页面。
 
 ## 本地预览（可选）
 
@@ -105,7 +105,7 @@ hugo --environment production --minify --baseURL https://YOUR_USERNAME.github.io
 
 **文章没有出现**：检查 `draft`、发布日期以及是否提交到了 `main`，再确认最新部署是否成功。
 
-**本地构建提示找不到文章**：检查是否删除了其他文章仍通过 `relref` 引用的示例页面。
+**本地构建提示找不到文章**：检查自己添加的 `relref` 链接是否指向已删除或改名的文章。
 
 **更换 Hugo 版本**：需同步更新 `.hugo-version` 和工作流中的 `HUGO_SHA256`。后者对应官方 Hugo Extended Linux amd64 发布包的 SHA-256 校验值。
 

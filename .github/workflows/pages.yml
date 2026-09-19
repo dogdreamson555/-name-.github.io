@@ -51,14 +51,14 @@ jobs:
           echo "${RUNNER_TEMP}/hugo-bin" >> "$GITHUB_PATH"
           "${RUNNER_TEMP}/hugo-bin/hugo" version
 
-      - name: Download repository owner's avatar for favicon
+      - name: Download repository owner's avatar for favicon and sidebar
         env:
           REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: |
           avatar="${RUNNER_TEMP}/github-avatar"
           if curl --fail --location --proto '=https' --proto-redir '=https' \
             --connect-timeout 10 --max-time 30 --retry 2 \
-            "https://github.com/${REPOSITORY_OWNER}.png?size=64" --output "$avatar"; then
+            "https://github.com/${REPOSITORY_OWNER}.png?size=256" --output "$avatar"; then
             # Embed the actual image format in an SVG with a circular clip.
             mime="$(file --brief --mime-type "$avatar")"
             case "$mime" in
@@ -70,6 +70,7 @@ jobs:
             printf '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><defs><clipPath id="circle"><circle cx="32" cy="32" r="32"/></clipPath></defs><image width="64" height="64" preserveAspectRatio="xMidYMid slice" clip-path="url(#circle)" href="data:%s;base64,%s"/></svg>\n' \
               "$mime" "$encoded_avatar" > assets/img/github-avatar-circle.svg
             echo "HUGO_PARAMS_FAVICON=img/github-avatar-circle.svg" >> "$GITHUB_ENV"
+            echo "HUGO_PARAMS_GITHUBAVATAR=img/github-avatar-circle.svg" >> "$GITHUB_ENV"
           else
             echo "::warning::Could not download GitHub avatar; using the default favicon."
           fi

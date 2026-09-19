@@ -3,7 +3,8 @@ mainSections = ["post"]
 favicon = "img/favicon.svg"
 
 [sidebar]
-  # 留空时不显示头像；可填写图片 URL，或 assets 下的路径（如 img/avatar.png）。
+  # 留空时使用部署下载的 GitHub 头像；本地或下载失败时不显示。
+  # 填写图片 URL 或 assets 下的路径（如 img/avatar.png）可覆盖自动头像。
   avatar = ""
 
 [article]

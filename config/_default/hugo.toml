@@ -1,5 +1,6 @@
 # GitHub Pages 部署时会自动覆盖此地址；部署到其他平台时请填写自己的网址。
 baseURL = "https://example.org/"
+# 本地预览默认名称；GitHub Pages 部署时自动使用“仓库所有者 的博客”。
 title = "我的博客"
 theme = "hugo-theme-stack"
 defaultContentLanguage = "zh"

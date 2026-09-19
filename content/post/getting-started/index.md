@@ -13,7 +13,7 @@ image: ""
 
 ## 修改博客资料
 
-- 在 `config/_default/hugo.toml` 中修改 `title`。
+- 部署后的博客名称自动使用 `GitHub用户名 的博客`。需要自定义时，在仓库的 Actions Variables 中设置 `BLOG_TITLE`；本地预览名称由 `config/_default/hugo.toml` 中的 `title` 控制。
 - 在 `config/_default/params.toml` 中设置 `sidebar.avatar`。例如把头像放到 `assets/img/avatar.png`，再填写 `img/avatar.png`。
 - 评论默认关闭。启用前请在 `config/production/params.toml` 中配置自己的评论服务。
 

@@ -78,6 +78,7 @@ jobs:
         id: build
         env:
           SITE_BASE_URL: ${{ steps.pages.outputs.base_url }}
+          HUGO_TITLE: ${{ vars.BLOG_TITLE || format('{0} 的博客', github.repository_owner) }}
         run: |
           destination="$(mktemp -d "${RUNNER_TEMP}/hugo-public.XXXXXX")"
           hugo --environment production --minify \

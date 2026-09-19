@@ -24,13 +24,17 @@
 
 | 内容 | 修改位置 |
 | --- | --- |
-| 博客名称、菜单、时区 | [config/_default/hugo.toml](config/_default/hugo.toml) |
+| 本地预览名称、菜单、时区 | [config/_default/hugo.toml](config/_default/hugo.toml) |
 | 侧栏头像、目录、阅读时间、日期格式 | [config/_default/params.toml](config/_default/params.toml) |
 | 正式部署的评论配置 | [config/production/params.toml](config/production/params.toml) |
 | 自定义样式 | [assets/scss/custom.scss](assets/scss/custom.scss) |
 | 示例文章 | [content/post/](content/post/) |
 
-将 `hugo.toml` 中的 `title` 改为自己的博客名称。侧栏头像默认留空；可以将头像放在 `assets/img/avatar.png`，然后修改已有的 `[sidebar]` 配置：
+GitHub Pages 部署时，博客名称自动设为 `GitHub用户名 的博客`（组织仓库使用组织账号名），同步用于首页标题、侧栏、页脚和站点元数据。文章页仍使用文章自己的标题。
+
+需要自定义线上名称时，在仓库 **Settings → Secrets and variables → Actions → Variables** 中添加仓库变量 `BLOG_TITLE`。本地预览名称由 `hugo.toml` 中的 `title` 控制。
+
+侧栏头像默认留空；可以将头像放在 `assets/img/avatar.png`，然后修改已有的 `[sidebar]` 配置：
 
 ```toml
 [sidebar]

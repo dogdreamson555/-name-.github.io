@@ -7,3 +7,25 @@
 [tableOfContents]
   startLevel = 2
   endLevel = 4
+
+[goldmark.renderer]
+  unsafe = true
+
+[goldmark.extensions]
+  strikethrough = false
+
+[goldmark.extensions.extras.delete]
+  enable = true
+
+[goldmark.extensions.extras.subscript]
+  enable = true
+
+[goldmark.extensions.extras.superscript]
+  enable = true
+
+[goldmark.extensions.passthrough]
+  enable = true
+
+  [goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]

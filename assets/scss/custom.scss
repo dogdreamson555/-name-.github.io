@@ -191,6 +191,17 @@ body > .main-container {
     }
 }
 
+/* Preserve long prose without changing code or formula layout. */
+.article-content {
+    overflow-wrap: anywhere;
+
+    pre,
+    .katex,
+    .mermaid {
+        overflow-wrap: normal;
+    }
+}
+
 /* Collapse only code blocks that are taller than the reference height. */
 .article-content {
     .highlight.code-collapsed {

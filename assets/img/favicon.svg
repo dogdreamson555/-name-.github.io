@@ -1,0 +1,6 @@
+<!-- SPDX-License-Identifier: GPL-3.0-only; original template fallback icon. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#264653"/>
+  <path d="M18 15h28v34H18z" fill="#f4f1de"/>
+  <path d="M24 24h16M24 32h16M24 40h10" fill="none" stroke="#264653" stroke-width="4"/>
+</svg>

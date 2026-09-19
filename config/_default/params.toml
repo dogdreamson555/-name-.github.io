@@ -1,5 +1,6 @@
 mainSections = ["post"]
-favicon = "img/favicon.png"
+# 本地预览及头像下载失败时使用此图标；GitHub Pages 部署时自动使用仓库所有者头像。
+favicon = "img/favicon.svg"
 
 [sidebar]
   # 留空时不显示头像；可填写图片 URL，或 assets 下的路径（如 img/avatar.png）。

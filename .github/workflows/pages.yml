@@ -51,6 +51,30 @@ jobs:
           echo "${RUNNER_TEMP}/hugo-bin" >> "$GITHUB_PATH"
           "${RUNNER_TEMP}/hugo-bin/hugo" version
 
+      - name: Download repository owner's avatar for favicon
+        env:
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: |
+          avatar="${RUNNER_TEMP}/github-avatar"
+          if curl --fail --location --proto '=https' --proto-redir '=https' \
+            --connect-timeout 10 --max-time 30 --retry 2 \
+            "https://github.com/${REPOSITORY_OWNER}.png?size=64" --output "$avatar"; then
+            # GitHub may return JPEG even for a .png URL. Keep the actual format.
+            mime="$(file --brief --mime-type "$avatar")"
+            case "$mime" in
+              image/png) extension=png ;;
+              image/jpeg) extension=jpg ;;
+              image/gif) extension=gif ;;
+              image/webp) extension=webp ;;
+              *) echo "::warning::Avatar response is not a supported image; using the default favicon."
+                 exit 0 ;;
+            esac
+            cp "$avatar" "assets/img/github-avatar.${extension}"
+            echo "HUGO_PARAMS_FAVICON=img/github-avatar.${extension}" >> "$GITHUB_ENV"
+          else
+            echo "::warning::Could not download GitHub avatar; using the default favicon."
+          fi
+
       - name: Build production site into a fresh directory
         id: build
         env:

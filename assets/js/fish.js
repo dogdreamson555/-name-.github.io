@@ -1,3 +1,10 @@
+/*!
+ * Source supplied by the repository maintainer:
+ * https://blog.csdn.net/Jsenna/article/details/120836708
+ * This local version has been adapted for the blog.
+ * Upstream authorship and applicable license remain unverified.
+ * See THIRD_PARTY_NOTICES.md; this file is not covered by the root GPL grant.
+ */
 window.RENDERER = {
     POINT_INTERVAL : 5,
     FISH_COUNT : 3,
@@ -351,4 +358,3 @@ FISH.prototype = {
         this.controlStatus(context);
     }
 };
-

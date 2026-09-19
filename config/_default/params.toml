@@ -2,7 +2,8 @@ mainSections = ["post"]
 favicon = "img/favicon.png"
 
 [sidebar]
-  avatar = "https://avatars.githubusercontent.com/u/217573474?s=400&u=f8c010f4cbe0faa92b33fa7b38209273ad4bc681&v=4"
+  # 留空时不显示头像；可填写图片 URL，或 assets 下的路径（如 img/avatar.png）。
+  avatar = ""
 
 [article]
   toc = true

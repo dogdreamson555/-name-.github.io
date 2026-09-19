@@ -28,10 +28,10 @@ jobs:
       # Update together with .hugo-version when intentionally upgrading Hugo.
       HUGO_SHA256: f43494894cdf4a8630a201d5c828051c77f523cc66bb3938b30806835470ac20
     steps:
-      - name: Checkout source and pinned theme
+      # Theme source is included in this repository as ordinary files.
+      - name: Checkout source and bundled theme
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          submodules: recursive
           persist-credentials: false
 
       - name: Configure Pages

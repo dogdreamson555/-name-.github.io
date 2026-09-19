@@ -1,5 +1,6 @@
-baseURL = "https://dogdreamson555.github.io/"
-title = "dogdreamson555 的博客"
+# GitHub Pages 部署时会自动覆盖此地址；部署到其他平台时请填写自己的网址。
+baseURL = "https://example.org/"
+title = "我的博客"
 theme = "hugo-theme-stack"
 defaultContentLanguage = "zh"
 locale = "zh-CN"

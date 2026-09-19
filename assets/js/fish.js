@@ -1,9 +1,7 @@
 /*!
- * Source supplied by the repository maintainer:
+ * Source: Jsenna's CSDN article
  * https://blog.csdn.net/Jsenna/article/details/120836708
- * This local version has been adapted for the blog.
- * Upstream authorship and applicable license remain unverified.
- * See THIRD_PARTY_NOTICES.md; this file is not covered by the root GPL grant.
+ * Adapted for this blog. See THIRD_PARTY_NOTICES.md for source attribution.
  */
 window.RENDERER = {
     POINT_INTERVAL : 5,

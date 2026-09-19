@@ -59,18 +59,17 @@ jobs:
           if curl --fail --location --proto '=https' --proto-redir '=https' \
             --connect-timeout 10 --max-time 30 --retry 2 \
             "https://github.com/${REPOSITORY_OWNER}.png?size=64" --output "$avatar"; then
-            # GitHub may return JPEG even for a .png URL. Keep the actual format.
+            # Embed the actual image format in an SVG with a circular clip.
             mime="$(file --brief --mime-type "$avatar")"
             case "$mime" in
-              image/png) extension=png ;;
-              image/jpeg) extension=jpg ;;
-              image/gif) extension=gif ;;
-              image/webp) extension=webp ;;
+              image/png|image/jpeg|image/gif|image/webp) ;;
               *) echo "::warning::Avatar response is not a supported image; using the default favicon."
                  exit 0 ;;
             esac
-            cp "$avatar" "assets/img/github-avatar.${extension}"
-            echo "HUGO_PARAMS_FAVICON=img/github-avatar.${extension}" >> "$GITHUB_ENV"
+            encoded_avatar="$(base64 --wrap=0 "$avatar")"
+            printf '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><defs><clipPath id="circle"><circle cx="32" cy="32" r="32"/></clipPath></defs><image width="64" height="64" preserveAspectRatio="xMidYMid slice" clip-path="url(#circle)" href="data:%s;base64,%s"/></svg>\n' \
+              "$mime" "$encoded_avatar" > assets/img/github-avatar-circle.svg
+            echo "HUGO_PARAMS_FAVICON=img/github-avatar-circle.svg" >> "$GITHUB_ENV"
           else
             echo "::warning::Could not download GitHub avatar; using the default favicon."
           fi

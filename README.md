@@ -39,7 +39,7 @@
 
 ### 网站图标
 
-GitHub Pages 部署时会下载**仓库所有者的 GitHub 头像**作为 favicon；组织仓库使用组织头像。头像作为本地资源随网站发布，访客无需向 GitHub 请求图片。
+GitHub Pages 部署时会下载**仓库所有者的 GitHub 头像**，生成透明背景的圆形 SVG favicon；组织仓库使用组织头像。头像嵌入 SVG 并作为本地资源随网站发布，访客无需向 GitHub 请求图片。
 
 修改 GitHub 头像后，重新运行部署即可更新。下载失败时和本地预览时使用 [assets/img/favicon.svg](assets/img/favicon.svg) 备用图标。此设置与侧栏头像独立。
 

@@ -26,9 +26,6 @@ Gemfile.lock
 AGENTS.md
 skills-lock.json
 
-# Site maintenance notes belong in .private, not the public repository.
-/README.md
-
 # Hugo build output and local caches
 /public/
 /resources/_gen/
